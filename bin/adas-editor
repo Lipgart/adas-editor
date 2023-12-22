@@ -1,0 +1,17 @@
+#!python
+import argparse
+import sys
+
+from PySide6.QtWidgets import QApplication
+from adas.editor.gui import MainWindow
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='ADAS Editor')
+    args = parser.parse_args()
+
+    app = QApplication(sys.argv)
+
+    window = MainWindow()
+    window.show()
+
+    app.exec()
