@@ -11,8 +11,10 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle('ADAS Editor')
 
+        # self.setStyleSheet("border: 1px solid red")
+
         self.main_widget = MainWidget()
         self.setCentralWidget(self.main_widget)
 
     def sizeHint(self):
-        return QSize(1280, 720)
+        return QSize(1280, 850)

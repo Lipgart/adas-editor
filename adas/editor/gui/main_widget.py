@@ -3,7 +3,7 @@ from enum import Enum
 from PySide6.QtWidgets import QWidget, QStackedLayout, QDialog, QTabWidget
 from PySide6.QtCore import Qt, QTimer
 
-from adas.editor.gui import ConnectionWidget, ConnectionDialog, VideoServerWidget
+from adas.editor.gui import ConnectionWidget, ConnectionDialog, VideoServerWidget, View360Widget
 
 
 class State(Enum):
@@ -34,8 +34,10 @@ class MainWidget(QWidget):
 
         host = connect_dialog.get_host()
         video_server_config = VideoServerWidget(host)
+        view360_config = View360Widget(host)
 
         self.tab_widget.clear()
+        self.tab_widget.addTab(view360_config, 'Конфигурация кругового обзора')
         self.tab_widget.addTab(video_server_config, 'Конфигурация видео-сервера')
         self.layout.setCurrentIndex(State.Connected.value)
 

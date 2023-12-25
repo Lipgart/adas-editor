@@ -1,5 +1,5 @@
 from PySide6.QtGui import Qt
-from PySide6.QtWidgets import QWidget, QLabel, QLineEdit, QHBoxLayout
+from PySide6.QtWidgets import QWidget, QLabel, QLineEdit, QHBoxLayout, QSizePolicy
 
 
 class LabeledEdit(QWidget):
@@ -7,11 +7,14 @@ class LabeledEdit(QWidget):
         super().__init__()
 
         label = QLabel(text)
+        label.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum))
 
         if label_width is not None:
             label.setFixedWidth(label_width)
 
         self.edit = QLineEdit()
+        self.edit.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum))
+        self.edit.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         if value is not None:
             self.edit.setText(value)
@@ -24,7 +27,9 @@ class LabeledEdit(QWidget):
 
         layout = QHBoxLayout()
         layout.addWidget(label)
-        layout.addWidget(self.edit, Qt.AlignmentFlag.AlignRight)
+        layout.addWidget(self.edit, Qt.AlignmentFlag.AlignLeft)
+
+        self.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum))
 
         self.setLayout(layout)
 
