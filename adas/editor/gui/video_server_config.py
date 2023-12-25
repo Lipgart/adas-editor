@@ -189,8 +189,6 @@ class VideoServerWidget(QFrame):
                 widget.setParent(None)
 
             self.streams.clear()
-
-            config = self.connector.get_config()
             for stream in config.streams:
                 widget = StreamConfigWidget(stream, video_server=self)
                 self.streams.append(widget)
