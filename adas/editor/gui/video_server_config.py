@@ -2,7 +2,7 @@ import json
 
 from PySide6.QtGui import Qt
 from PySide6.QtWidgets import QFrame, QWidget, QVBoxLayout, QScrollArea, QGroupBox, QPushButton, QStyle, \
-    QHBoxLayout, QMessageBox, QFileDialog
+    QHBoxLayout, QMessageBox, QFileDialog, QSizePolicy
 from adas.config import ParseError
 
 from adas.config.video_server import ExternalConnector, Config, StreamConfig, Shape, pack, parse
@@ -16,15 +16,17 @@ class StreamConfigWidget(QFrame):
 
         self.video_server = video_server
         self.setFrameStyle(QFrame.Shape.Box)
-        self.setFixedWidth(510)
+        self.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum))
 
         LABEL_WIDTH = 150
         EDIT_WIDTH = 300
         FRAME_EDIT_WIDTH = 100
 
         self.identifier = LabeledEdit('Идентификатор', tip='front', label_width=LABEL_WIDTH, edit_width=EDIT_WIDTH)
+        self.identifier.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum))
 
         stream_box = QGroupBox()
+        stream_box.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum))
         stream_box.setTitle('Параметры потока')
         stream_layout = QVBoxLayout()
         self.source = LabeledEdit('Источник', tip='rtspsrc', label_width=LABEL_WIDTH, edit_width=EDIT_WIDTH)
@@ -41,6 +43,7 @@ class StreamConfigWidget(QFrame):
         stream_box.setLayout(stream_layout)
 
         frame_box = QGroupBox()
+        frame_box.setSizePolicy(QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum))
         frame_box.setTitle('Размеры изображения')
         frame_layout = QVBoxLayout()
         self.width = LabeledEdit('Ширина кадра', tip='1280', label_width=LABEL_WIDTH, edit_width=FRAME_EDIT_WIDTH)
