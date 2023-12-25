@@ -7,7 +7,7 @@ from adas.config import ParseError
 
 from adas.config.video_server import ExternalConnector, Config, StreamConfig, Shape, pack, parse
 
-from adas.editor.gui import LabeledEdit, MessageBox
+from adas.editor.gui.utils import LabeledEdit, MessageBox
 
 
 class StreamConfigWidget(QFrame):

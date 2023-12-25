@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QDialog, QLabel, QVBoxLayout, QHBoxLayout, QPushBu
 from PySide6.QtCore import Qt, QSize
 
 from adas.config import Checker
-from adas.editor.gui import MessageBox
+from adas.editor.gui.utils import MessageBox
 
 
 class ConnectionDialog(QDialog):
